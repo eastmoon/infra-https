@@ -1,0 +1,34 @@
+# Docker-Compose document
+# Ref : https://docs.docker.com/compose/compose-file/
+
+version: "3"
+services:
+  nginx:
+    image: nginx
+    container_name: msw_service_nginx_${TAG}
+    volumes:
+      - ../src/nginx/:/etc/nginx/conf.d/
+      - ../cache/nginx/:/var/log/nginx/
+      - ../cache/angular/publish/repo/:/usr/share/nginx/html
+      - ../cache/react/publish/:/usr/share/nginx/html/react/
+      - ../cache/vue/publish/:/usr/share/nginx/html/vue/
+    ports:
+      - "4444:80"
+    networks:
+      - service_network
+
+  dotnet:
+    image: msw.dotnet:publish
+    container_name: msw_service_dotnet_${TAG}
+    networks:
+      - service_network
+
+  node:
+    image: msw.node:publish
+    container_name: msw_service_node_${TAG}
+    networks:
+      - service_network
+
+networks:
+  service_network:
+    driver: bridge
