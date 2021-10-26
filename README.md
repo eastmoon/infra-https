@@ -88,10 +88,10 @@ service.bat [start | down]
 
 測試專案是否正常可以使用以下網址
 
-+ http://localhost/
-+ http://localhost/node/
++ https://localhost/
++ https://localhost/node/
     - http://localhost:3000/
-+ http://localhost/dotnet/api/values
++ https://localhost/dotnet/api/values
     - http://localhost:5000/api/values
 
 ## 文獻
@@ -104,3 +104,4 @@ service.bat [start | down]
     - [在Nginx上為你的網站加入Https](https://medium.com/@zneuray/%E5%9C%A8nginx%E4%B8%8A%E7%82%BA%E4%BD%A0%E7%9A%84%E7%B6%B2%E7%AB%99%E5%8A%A0%E5%85%A5https-32af0223283a)
 + SSL CA
     - [Comodo SSL](https://comodosslstore.com/promoads/cheap-comodo-ssl-certificates.aspx?gclid=Cj0KCQjwiNSLBhCPARIsAKNS4_dgB3p4L0gZvJnqWlHRqBKKq8qPlDF2IL__eOHwak0m7OAeeFmUqc8aAvf4EALw_wcB)
+    - [為何HTTPS憑證有貴有便宜還更可以免費？讓我們從CA原理開始講起。](https://progressbar.tw/posts/98)
