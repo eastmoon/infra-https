@@ -1,0 +1,83 @@
+{
+	"info": {
+		"_postman_id": "c1b0a720-0095-4b11-9564-e84d00656de0",
+		"name": "infra-https-demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "dotnet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GET Method is success\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"pm.test(\"GET Response is right\", () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.expect(responseJson).to.be.a('array');\r",
+							"    pm.expect(responseJson[0]).to.eql(\"value1\");\r",
+							"    pm.expect(responseJson[1]).to.eql(\"value2\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/dotnet/api/values",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"dotnet",
+						"api",
+						"values"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "nodejs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GET Method is success\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"pm.test(\"GET Response is right\", () => {\r",
+							"    pm.expect(pm.response.text()).eql(\"Hello world!\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/node/hello",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"node",
+						"hello"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

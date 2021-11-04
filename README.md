@@ -92,11 +92,19 @@ service.bat [start | down]
 測試專案是否正常可以使用以下網址
 
 + https://localhost/
-+ https://localhost/node/
-    - http://localhost:3000/
++ https://localhost/node/hello
+    - http://localhost:3000/hello
 + https://localhost/dotnet/api/values
     - http://localhost:5000/api/values
 
+使用測試工具避免 SSL certificate 問題
+
++ CURL
+    - ```curl --insecure https://localhost/dotnet/api/values```
+    - ```curl --location --insecure http://localhost/dotnet/api/values```
++ Newman ( Postman console )，安裝 node.js 全域工具 ```npm install -g newman```
+    - ```newman run --insecure .\test\infra-https-demo.postman_collection.json```
+    
 ## 文獻
 
 + [HTTPS wiki](https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE)
@@ -117,10 +125,13 @@ service.bat [start | down]
             - [使用 Let's Encrypt 來申請憑證並且建立憑證鍊](https://aatp.zendesk.com/hc/zh-tw/articles/900004301303)
             - [SSL For Free 免費 SSL 憑證申請，使用 Let’s Encrypt 最簡單方法教學！](https://free.com.tw/ssl-for-free/)
         + [mkcert github](https://github.com/FiloSottile/mkcert)
-            - [快速產生本地端開發用SSL憑證工具-mkcert](https://xenby.com/b/205)
+            - [快速產生本地端開發用SSL憑證工具-mkcert](https://xenby.com/b/205-%E6%8E%A8%E8%96%A6-%E5%BF%AB%E9%80%9F%E7%94%A2%E7%94%9F%E6%9C%AC%E5%9C%B0%E7%AB%AF%E9%96%8B%E7%99%BC%E7%94%A8ssl%E6%86%91%E8%AD%89%E5%B7%A5%E5%85%B7-mkcert)
             - [Mkcert - 在 localhost 掛 HTTPS 神器](https://w3c.hexschool.com/blog/cd7b449b)
             - [Can I use it on the LAN network?](https://github.com/FiloSottile/mkcert/issues/210)
                 + **A cert verifies the domain name not any IP address. The verification happens in your browser or other client though.**
         + [Enabling SSL in your local network](https://anteru.net/blog/2020/enabling-ssl-in-your-local-network/)
             - [Can I be a root certificate authority for my local network?](https://superuser.com/questions/630914)
             - [Create a Certificate Authority and Certificates with OpenSSL](https://codeghar.wordpress.com/2008/03/17/create-a-certificate-authority-and-certificates-with-openssl/)
+        + Ignore SSL certificate problem
+            - [curl 略過檢查自簽 SSL 憑證有效性](https://www.opencli.com/linux/curl-ignore-ssl-verification)
+            - [Running collections on the command line with Newman](https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/)
