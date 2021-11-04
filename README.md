@@ -35,11 +35,11 @@ ssl_certificate_key /etc/nginx/ssl/nginx.key;
 
 ```
 server {
-  listen 80 default_server;
-  listen [::]:80 default_server;
+    listen 80 default_server;
+    listen [::]:80 default_server;
 
-  # Redirect to HTTPS
-  rewrite ^(.*) https://$host$1 permanent;
+    # Redirect to HTTPS
+    rewrite ^(.*) https://$host$1 permanent;
 }
 ```
 
@@ -62,6 +62,7 @@ server {
     location /dotnet/ {
         proxy_pass http://dotnet:5000/;
     }
+}
 ```
 > 嚴苛來說 Nginx 入口走 https，但其後的 Server 維持在 http 協定；在本實驗中可以用 http 連線，但在實務中應避免外部直接存取伺服器的相關連接埠
 
