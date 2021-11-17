@@ -104,7 +104,7 @@ service.bat [start | down]
     - ```curl --location --insecure http://localhost/dotnet/api/values```
 + Newman ( Postman console )，安裝 node.js 全域工具 ```npm install -g newman```
     - ```newman run --insecure .\test\infra-https-demo.postman_collection.json```
-    
+
 ## 文獻
 
 + [HTTPS wiki](https://zh.wikipedia.org/wiki/%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE)
@@ -135,3 +135,6 @@ service.bat [start | down]
         + Ignore SSL certificate problem
             - [curl 略過檢查自簽 SSL 憑證有效性](https://www.opencli.com/linux/curl-ignore-ssl-verification)
             - [Running collections on the command line with Newman](https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/)
+        + HTTP to HTTPS
+            - [Nginx HTTP 自動轉址到 HTTPS](https://xyz.cinc.biz/2019/04/nginx-http-redirect-https.html)
+            - [Nginx的https配置记录以及http强制跳转到https的方法梳理](https://zhuanlan.zhihu.com/p/32055783)
