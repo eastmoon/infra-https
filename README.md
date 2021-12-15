@@ -39,7 +39,7 @@ server {
     listen [::]:80 default_server;
 
     # Redirect to HTTPS
-    rewrite ^(.*) https://$host$1 permanent;
+    return 308 https://$host$request_uri;
 }
 ```
 
@@ -65,6 +65,17 @@ server {
 }
 ```
 > 嚴苛來說 Nginx 入口走 https，但其後的 Server 維持在 http 協定；在本實驗中可以用 http 連線，但在實務中應避免外部直接存取伺服器的相關連接埠
+
++ HTTP to HTTPS 使用開關
+
+利用一個開關檔案，啟用轉導行為，倘若未設置此檔案則不會轉導
+
+```
+if (-f /etc/nginx/ssl/nginx.https.on) {
+    # Redirect to HTTPS
+    return 308 https://$host$request_uri;
+}
+```
 
 ### 專案指令
 
